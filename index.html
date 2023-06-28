@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Together 🤝</title>
+    <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+    <link
+      href="https://unpkg.com/slim-select@latest/dist/slimselect.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="#" class="logo">
+          <img src="./img/logo.png" alt="site-logo" width="234" height="64" />
+        </a>
+        <form class="header-form">
+          <div class="header-form-field">
+            <input
+              type="email"
+              class="header-input"
+              name="user-email"
+              id="user-email"
+              placeholder=" "
+            />
+            <label for="user-email" class="header-label">Email</label>
+            <p class="error-input">Please enter a valid email address</p>
+          </div>
+          <div class="header-form-field">
+            <input
+              type="password"
+              class="header-input"
+              name="user-password"
+              id="user-name"
+              placeholder=" "
+            />
+            <label for="user-password" class="header-label">Password</label>
+            <a href="" class="forgot-pass">Forgot your password?</a>
+          </div>
+          <button type="submit" class="header-btn">Log in</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              StarCompany DESIGNS, MANUFACTURES AND
+              <span>Launches Advanced Rockets and Spacecrafts</span>
+            </h1>
+            <ul class="hero-steps">
+              <li class="hero-step current">
+                <div class="hero-steps-top">
+                  <div class="hero-input-wrap">
+                    <button type="button" class="hero-back">
+                      <svg class="hero-back-icon" width="10" height="17">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                    <p class="hero-input-text">Who are you?</p>
+                    <select id="single" class="select hero-input-field">
+                      <option value=""></option>
+                      <option value="value1">Engineer</option>
+                      <option value="value2">Developer</option>
+                      <option value="value3">QA</option>
+                      <option value="value4">Manager</option>
+                    </select>
+                    <button
+                      type="button"
+                      class="hero-next js-hero-next profession-btn"
+                    >
+                      Next step
+                      <svg class="hero-next-icon arr" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="hero-input-bottom step-error"></p>
+              </li>
+
+              <li class="hero-step">
+                <div class="hero-steps-top">
+                  <div class="hero-input-wrap">
+                    <button type="button" class="hero-back">
+                      <svg class="hero-back-icon" width="10" height="17">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                    <p class="hero-input-text">What is your age?</p>
+                    <select id="single2" class="select hero-input-field">
+                      <option value=""></option>
+                      <option value="value1">18</option>
+                      <option value="value2">19</option>
+                      <option value="value3">20</option>
+                      <option value="value4">21</option>
+                      <option value="value5">22</option>
+                      <option value="value6">23</option>
+                      <option value="value7">24</option>
+                      <option value="value8">25</option>
+                    </select>
+                    <button
+                      type="button"
+                      class="hero-next js-hero-next age-btn"
+                    >
+                      Next step
+                      <svg class="hero-next-icon arr" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="hero-input-bottom step-error"></p>
+              </li>
+              <li class="hero-step">
+                <div class="hero-steps-top">
+                  <div class="hero-input-wrap">
+                    <button type="button" class="hero-back">
+                      <svg class="hero-back-icon" width="10" height="17">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                    <p class="hero-input-text">I am from</p>
+                    <input type="text" class="hero-input-field" />
+
+                    <button
+                      type="button"
+                      class="hero-next js-hero-next location-btn"
+                    >
+                      Next step
+                      <svg class="hero-next-icon arr" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="hero-input-bottom">
+                  E.g.: New Roads or 70760<br />We don’t use postal addresses to
+                  contact members directly!
+                </p>
+              </li>
+              <li class="hero-step">
+                <div class="hero-steps-top">
+                  <div class="hero-input-wrap">
+                    <button type="button" class="hero-back">
+                      <svg class="hero-back-icon" width="10" height="17">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                    <p class="hero-input-text">Your email adress</p>
+                    <input type="email" class="hero-input-field" />
+
+                    <button
+                      type="button"
+                      class="hero-next js-hero-next email-btn"
+                    >
+                      Next step
+                      <svg class="hero-next-icon arr" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="hero-input-bottom step-error">
+                  Please enter a valid email address
+                </p>
+              </li>
+              <li class="hero-step">
+                <div class="hero-steps-top">
+                  <div class="hero-input-wrap">
+                    <button type="button" class="js-hero-back hero-back">
+                      <svg class="hero-back-icon" width="10" height="17">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                    </button>
+                    <p class="hero-input-text">Create your password</p>
+                    <input type="password" class="hero-input-field" />
+                    <button
+                      type="button"
+                      class="hero-next js-hero-next final-btn"
+                    >
+                      Start now
+                      <svg class="hero-next-icon arr" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-arr-l"></use>
+                      </svg>
+                      <!-- <svg class="hero-next-icon" width="17" height="11">
+                        <use href="./img/symbol-defs.svg#icon-check"></use>
+                      </svg> -->
+                    </button>
+                  </div>
+                </div>
+
+                <p class="hero-input-bottom">
+                  By clicking the button above you agree to our
+                  <a href="">Terms of Use</a> and
+                  <a href="">Privacy Policy</a> including use of cookies and to
+                  receive newsletters, account updates and offers sent by
+                  StarCompany.
+                </p>
+              </li>
+            </ul>
+            <ul class="hero-bulits">
+              <li class="hero-bulit-item filled"></li>
+              <li class="hero-bulit-item"></li>
+              <li class="hero-bulit-item"></li>
+              <li class="hero-bulit-item"></li>
+              <li class="hero-bulit-item"></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./js/main.js"></script>
+    <script>
+      new SlimSelect({
+        select: '#single',
+      });
+
+      new SlimSelect({
+        select: '#single2',
+      });
+    </script>
+  </body>
+</html>
