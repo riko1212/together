@@ -370,3 +370,50 @@ a {
 .hero-bulit-item.filled {
   background-color: #ffffff;
 }
+
+/* Media */
+
+@media screen and (max-width: 991px) {
+  .header-input,
+  .error-input {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logo {
+    margin-bottom: 20px;
+  }
+  .header-input,
+  .error-input {
+    width: 200px;
+  }
+  .header > .container {
+    flex-direction: column;
+  }
+
+  .hero-title {
+    margin-bottom: 80px;
+  }
+
+  .hero-next,
+  .hero-back {
+    transform: translate(0, -250%);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header-form {
+    flex-direction: column;
+    gap: 60px;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero-input-wrap {
+    width: 90vw;
+  }
+}

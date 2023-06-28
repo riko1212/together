@@ -32,6 +32,12 @@ const showError = (event, err) => {
   errorView.textContent = err.message;
 };
 
+const validateEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  console.log(regex.test(email));
+  return regex.test(email);
+};
+
 const onProfessionBtnElClick = (e) => {
   if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
     const errorView = e.target
@@ -45,20 +51,10 @@ const onProfessionBtnElClick = (e) => {
   }
 };
 
-const onAgeBtnElClick = (e) => {
+const btnClick = (word, e) => {
   if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
     fetchErrors().then(({ errors }) => {
-      const error = errors.find((el) => el.name === 'age');
-      showError(e, error);
-    });
-  } else {
-    makeNextStep(e);
-  }
-};
-const onLocationBtnElClick = (e) => {
-  if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
-    fetchErrors().then(({ errors }) => {
-      const error = errors.find((el) => el.name === 'location');
+      const error = errors.find((el) => el.name === word);
       showError(e, error);
     });
   } else {
@@ -66,8 +62,18 @@ const onLocationBtnElClick = (e) => {
   }
 };
 
+const onAgeBtnElClick = (e) => {
+  btnClick('age', e);
+};
+const onLocationBtnElClick = (e) => {
+  btnClick('location', e);
+};
+
 const onEmailBtnElClick = (e) => {
-  if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
+  if (
+    e.target.parentNode.querySelector('.hero-input-field').value === '' ||
+    !validateEmail(e.target.parentNode.querySelector('.hero-input-field').value)
+  ) {
     fetchErrors().then(({ errors }) => {
       const error = errors.find((el) => el.name === 'email');
       showError(e, error);
@@ -112,9 +118,11 @@ finalBtnEl.addEventListener('click', onFinalBtnElClick);
 
 const onPrevBtnClick = (e) => {
   let active = 0;
+  console.log(stepsArr);
   stepsArr.forEach((el, i) => {
     if (el.classList.contains('current')) {
       active = i;
+      console.log(i);
       el.classList.remove('current');
     }
   });
