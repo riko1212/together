@@ -1,26 +1,19 @@
-const nextBtnEl = document.querySelectorAll('.js-hero-next');
-const prevBtnEl = document.querySelectorAll('.js-hero-back');
-const stepsArr = document.querySelectorAll('.hero-step');
-const bulitArr = document.querySelectorAll('.hero-bulit-item');
-const professionBtnEl = document.querySelector('.profession-btn');
-const ageBtnEl = document.querySelector('.age-btn');
-const locationBtnEl = document.querySelector('.location-btn');
-const emailBtnEl = document.querySelector('.email-btn');
-const finalBtnEl = document.querySelector('.final-btn');
+import refs from './refs.js';
+import fetchErrors from './fetchErrors.js';
+
+const fillBulits = () => {
+  refs.stepsArr.forEach((el, i) => {
+    if (el.classList.contains('current')) {
+      refs.bulitArr[i].classList.add('filled');
+    }
+  });
+};
 
 const makeNextStep = (event) => {
   event.target.closest('.hero-step').classList.remove('current');
   event.target
     .closest('.hero-step')
     .nextElementSibling.classList.add('current');
-};
-
-const fetchErrors = () => {
-  return fetch('http://www.mocky.io/v2/5dfcef48310000ee0ed2c281').then(
-    (response) => {
-      return response.json();
-    }
-  );
 };
 
 const showError = (event, err) => {
@@ -34,8 +27,21 @@ const showError = (event, err) => {
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  console.log(regex.test(email));
   return regex.test(email);
+};
+
+//Handlers
+
+const btnClick = (word, e) => {
+  if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
+    fetchErrors().then(({ errors }) => {
+      const error = errors.find((el) => el.name === word);
+      showError(e, error);
+    });
+  } else {
+    makeNextStep(e);
+    fillBulits();
+  }
 };
 
 const onProfessionBtnElClick = (e) => {
@@ -48,17 +54,7 @@ const onProfessionBtnElClick = (e) => {
     errorView.textContent = 'Please select your position';
   } else {
     makeNextStep(e);
-  }
-};
-
-const btnClick = (word, e) => {
-  if (e.target.parentNode.querySelector('.hero-input-field').value === '') {
-    fetchErrors().then(({ errors }) => {
-      const error = errors.find((el) => el.name === word);
-      showError(e, error);
-    });
-  } else {
-    makeNextStep(e);
+    fillBulits();
   }
 };
 
@@ -80,6 +76,7 @@ const onEmailBtnElClick = (e) => {
     });
   } else {
     makeNextStep(e);
+    fillBulits();
   }
 };
 
@@ -98,37 +95,23 @@ const onFinalBtnElClick = (e) => {
   }
 };
 
-professionBtnEl.addEventListener('click', onProfessionBtnElClick);
-ageBtnEl.addEventListener('click', onAgeBtnElClick);
-locationBtnEl.addEventListener('click', onLocationBtnElClick);
-emailBtnEl.addEventListener('click', onEmailBtnElClick);
-finalBtnEl.addEventListener('click', onFinalBtnElClick);
-
-// const onNextBtnClick = (e) => {
-//   let active = 0;
-//   stepsArr.forEach((el, i) => {
-//     if (el.classList.contains('current')) {
-//       active = i;
-//       el.classList.remove('current');
-//     }
-//   });
-//   stepsArr[active + 1].classList.add('current');
-//   bulitArr[active + 1].classList.add('filled');
-// };
-
 const onPrevBtnClick = (e) => {
   let active = 0;
-  console.log(stepsArr);
-  stepsArr.forEach((el, i) => {
+  refs.stepsArr.forEach((el, i) => {
     if (el.classList.contains('current')) {
       active = i;
-      console.log(i);
       el.classList.remove('current');
     }
   });
-  stepsArr[active - 1].classList.add('current');
-  bulitArr[active].classList.remove('filled');
+  refs.stepsArr[active - 1].classList.add('current');
+  refs.bulitArr[active].classList.remove('filled');
 };
 
-// nextBtnEl.forEach((el) => el.addEventListener('click', onNextBtnClick));
-prevBtnEl.forEach((el) => el.addEventListener('click', onPrevBtnClick));
+//Listeners
+
+refs.professionBtnEl.addEventListener('click', onProfessionBtnElClick);
+refs.ageBtnEl.addEventListener('click', onAgeBtnElClick);
+refs.locationBtnEl.addEventListener('click', onLocationBtnElClick);
+refs.emailBtnEl.addEventListener('click', onEmailBtnElClick);
+refs.finalBtnEl.addEventListener('click', onFinalBtnElClick);
+refs.prevBtnEl.forEach((el) => el.addEventListener('click', onPrevBtnClick));
